@@ -24,14 +24,13 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
-    ['list'], 
-    ['html', { open: 'never', outputFolder: 'test-report' }],
+    ['html', { open: 'never', outputFolder: 'playwright-report' }],
     ['json', { outputFile: 'test-results/results.json' }],
     ['junit', { outputFile: 'test-results/results.xml' }],
     // ['line'], --> Line reporter is more concise than the list reporter. It uses a single line to report last finished test, and prints failures when they occur. Line reporter is useful for large test suites where it shows the progress but does not spam the output by listing all the tests.
     // ['dot'], --> Dot reporter is very concise - it only produces a single character per successful test run. It is the default on CI and useful where you don't want a lot of output.
     // ['blob', { outputFile: `./blob-report/report-${os.platform()}.zip` }]], --> Blob reports contain all the details about the test run and can be used later to produce any other report. Their primary function is to facilitate the merging of reports from sharded tests.
-    // [ process.env.CI ? 'github' : 'line' ], --> GitHub reporter is useful for CI environments, it produces a report that can be viewed in the GitHub Actions UI. It also supports annotations for test failures.
+    [ process.env.CI ? 'github' : 'list', { printSteps: true} ], // --> GitHub reporter is useful for CI environments, it produces a report that can be viewed in the GitHub Actions UI. It also supports annotations for test failures.
   ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
