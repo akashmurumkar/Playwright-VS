@@ -1,0 +1,19 @@
+{
+  "name": "playwright-vs",
+  "version": "1.0.0",
+  "description": "Playwright Testing Framework",  
+  "main": "index.js",
+  "author": "Akash Murumkar",
+  "license": "MIT",
+  "dependencies": {
+    "chromium": "^3.0.3",
+    "playwright": "^1.50.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.50.1",
+    "@types/node": "^22.13.1"
+  },
+  "scripts": {
+    "test": "playwright test"
+  }
+}
